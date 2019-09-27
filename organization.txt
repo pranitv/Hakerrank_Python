@@ -1,0 +1,106 @@
+class Organization:
+    empl = 0
+    empl_list = []
+    empl_ID=0
+    def __init__(self,name):
+        self.name = name
+        return
+    
+    def add_employee(self,name,qualification,exp=0,):
+        
+        self.name=name
+        self.qualification=qualification
+        self.exp=exp
+        Organization.empl_ID +=1 
+        employee={"Name":self.name,"Qualification":self.qualification,"ID":Organization.empl_ID,"Experience":self.exp}
+        Organization.empl_list.append(employee)
+        Organization.empl+=1
+        return
+    
+    def details(self):
+        return Organization.empl_list
+        
+    def freshers(self):
+        freshers =[]
+        for i in Organization.empl_list:
+            if i['Experience']==0:
+                freshers.append(i)
+        for j in freshers:
+            for key,value in j.items():
+                print(key,":",value)
+            print()
+    
+    def experienced(self):
+        experienced =[]
+        for i in Organization.empl_list:
+            if i['Experience']!=0:
+                experienced.append(i)
+        for j in experienced:
+            for key,value in j.items():
+                print(key,":",value)
+            print()
+        
+            
+        
+    
+class Employee(Organization):
+    def __init__(self,name):
+        super().__init__(name)
+    
+    def search_employee(self,ID):
+        self.ID=ID
+        l1 = super().details()
+        for k in l1:
+            if k['ID']==self.ID:
+                for key,value in k.items():
+                    print(key,":",value)
+        
+        
+print('Enter the name of organization')        
+org = input()
+print('1.Admin')
+print('2.Employee')
+choice=int(input())
+if choice==1:
+    a1 = Organization(org)
+    admin()
+    def admin():
+        print("1.Add Employee\n2.Details\n3.NO. of Freshers\n4.Np. of Experienced\n5.Exit")
+        if int(input())==1:
+            print('enter name of the employee')
+            name =input()
+            print('enter qualification of the employee')
+            quali =input()
+            print('enter experience(in years) if any')
+            exp = int(input())
+            a1.add_employee(name,quali,exp)
+    
+        elif int(input())==2:
+            print(a1.details())
+    
+        elif int(input())==3:
+            a1.freshers()
+        
+        elif int(input())==4:
+            a1.experienced()
+    
+        elif int(input())==5:
+            exit()
+        
+        else:    
+            print('Invalid choice')
+            
+        
+        admin()
+
+else:
+    emply()
+    def emply():
+        e1 = Employee
+        print('enter your id')
+        e1.search_employee(int(input()))
+    emply()
+        
+def exit():
+    print('Thank You!')
+
