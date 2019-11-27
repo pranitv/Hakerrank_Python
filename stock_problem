@@ -1,0 +1,23 @@
+n = int(input('no.of Days: '))
+stock_values = []
+print('Enter Stock Value for n days')
+for i in range(n):
+    stock_values.append(int(input()))
+bought_value = stock_values[0]
+profit = []
+for j in range(1,len(stock_values)):
+    sell_value = 0
+    if bought_value != 0:
+        if stock_values[j]>bought_value:
+            sell_value = stock_values[j]
+            profit.append(sell_value-bought_value)
+            bought_value = 0
+        else:
+            if bought_value == 0:
+                bought_value = stock_values[j]
+            else:
+                pass
+    else:
+        bought_value = stock_values[j]
+print("Profit :",sum(profit))
+    
