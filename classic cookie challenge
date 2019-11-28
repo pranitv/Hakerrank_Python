@@ -1,0 +1,32 @@
+m = [ [1, 0, 0, 1, 0],
+      [1, 0, 1, 0, 0],
+      [0, 0, 1, 0, 1],
+      [1, 0, 1, 0, 1],
+      [1, 0, 1, 1, 0]
+      ]
+j = 0 
+count = 0
+result = []
+temp = 0
+
+for i in range(len(m)):
+    while(j<len(m[0])):
+        while(j<len(m[0]) and m[j][i]==1):
+            count+=1
+            temp =i+1
+        
+            while(temp<len(m[0]) and m[j][temp]==1):
+                count+=1
+                m[j][temp]=0
+                temp+=1
+            
+            j+=1
+        if(count>=1):
+            result.append(count)
+        count = 0
+        j+=1
+    j=0
+print(result)
+                                    
+        
+            
